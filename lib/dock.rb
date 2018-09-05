@@ -31,7 +31,11 @@ class Dock
   def revenue
     revenue = 0
     @returned_boats.each do |boat|
+      if boat.hours_rented <= @max_rental_time
     revenue += boat.price_per_hour * boat.hours_rented
+      else
+        revenue += boat.price_per_hour * @max_rental_time
+      end
     end
     revenue
   end
